@@ -62,6 +62,55 @@ const OTHER_FOSSILS = [
 
 // TODO: Replace this comment with your code
 
+
+app.get('/', (req,res) => {
+  res.render('homepage.html.njk')
+})
+
+app.post('/get-name', (req, res) => {
+  console.log(req.body)
+  console.log(req.query)
+  console.log(req.body.name)
+  console.log(req.query.name)
+
+  // const { name } = req.body
+  // req.session.userName = name
+  // console.log(name)
+
+
+const name = req.query.name
+console.log(`The user's name is ${name}`)
+
+  res.redirect('top-fossils', {name: name})
+})
+
+
+
+app.get('/top-fossils', (req, res) => {
+ 
+  const fossils = MOST_LIKED_FOSSILS
+  // const fossilDiv = document.querySelector('fossil-div')
+
+  // document.getElementById("/top-fossils").innerHTML = fossils
+
+  res.render('top-fossils.html.njk', {fossils: Object.values(fossils)})
+  // {
+  //   fossils: fossils
+  // });
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
 app.get('/random-fossil.json', (req, res) => {
   const randomFossil = lodash.sample(OTHER_FOSSILS);
   res.json(randomFossil);

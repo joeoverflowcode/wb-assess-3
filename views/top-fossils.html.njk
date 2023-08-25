@@ -6,11 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Most Liked Fossils</title>
   </head>
+
+  <style>
+    body{
+      top-margin:20px;
+      display: flex;
+      justify-content: space-evenly
+    }
+.fossil-div{
+  border: 3px solid black;
+}
+  </style>
   <body>
+<header>
+<h1>
+  Welcome {{ name }}
+</h1>
+</header>
+
+<br>
+    {% for fossilData in fossils %}
+    {# {% for  fossilKey, fossilData in fossils%} #}
+    
     <div class="fossil-div">
-      <h3>{{ fossils[0].name }}</h3>
+
+
+      <h3>{{ fossilData.name}}</h3>
+      <h2>Liked {{fossilData.num_likes}} times. <h2>
+        <img src="{{fossilData.img}}"/>
+        </div>
+        {% endfor %}
+
+
+      {# <h3>{{ fossils[0].name }}</h3>
       <h2>Liked {{ fossils[0].num_likes }} times.</h2>
-      <img src="{{ fossils[0].img }}" />
-    </div>
+      <img src="{{ fossils[0].img }}" /> 
+    </div> #}
+
+
   </body>
 </html>
