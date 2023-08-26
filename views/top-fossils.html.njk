@@ -13,21 +13,28 @@
       display: flex;
       justify-content: space-evenly
     }
-.fossil-div{
+img{
   border: 3px solid black;
 }
   </style>
+
+  
   <body>
-<header>
+  
+  <header>
 <h1>
-  Welcome {{ name }}
+    {%if name%}
+    <p>Hello {{name}}</p>
+    {%else%}
+    <p>Please login!</p>
+    {% endif %}
 </h1>
 </header>
 
 <br>
     {% for fossilData in fossils %}
     {# {% for  fossilKey, fossilData in fossils%} #}
-    
+
     <div class="fossil-div">
 
 

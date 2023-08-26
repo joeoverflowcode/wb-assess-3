@@ -65,35 +65,53 @@ const OTHER_FOSSILS = [
 
 app.get('/', (req,res) => {
   res.render('homepage.html.njk')
+
 })
 
 app.post('/get-name', (req, res) => {
+  // console.log(req.query)
+  // console.log(req.query.name)
+    console.log(req.session)
   console.log(req.body)
-  console.log(req.query)
   console.log(req.body.name)
-  console.log(req.query.name)
-
+console.log(req.session.name)
   // const { name } = req.body
-  // req.session.userName = name
+  // req.session.name = name
   // console.log(name)
 
+  // const sess = req.session
+  // sess.name = req.body.name
 
-const name = req.query.name
-console.log(`The user's name is ${name}`)
+req.session.name = req.body.name
 
-  res.redirect('top-fossils', {name: name})
+console.log(req.body.name)
+console.log(req.session.name)
+
+// res.send(`Welcome ${name}`)
+// const name = req.body.name
+// console.log(`The user's name is ${name}`)
+res.redirect('top-fossils'
+// , {name: req.session.name}
+)
+  // res.redirect('top-fossils', {name: name})
 })
 
-
+app.get('top-fossils', (req,res) => {
+  res.render('top-fossils.html.njk', {
+    name: req.session.name
+  })
+})
 
 app.get('/top-fossils', (req, res) => {
- 
+
+
   const fossils = MOST_LIKED_FOSSILS
   // const fossilDiv = document.querySelector('fossil-div')
 
   // document.getElementById("/top-fossils").innerHTML = fossils
 
-  res.render('top-fossils.html.njk', {fossils: Object.values(fossils)})
+  res.render('top-fossils.html.njk',
+   {fossils: Object.values(fossils)})
   // {
   //   fossils: fossils
   // });
