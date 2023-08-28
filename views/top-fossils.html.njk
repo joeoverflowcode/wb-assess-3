@@ -16,6 +16,12 @@
 img{
   border: 3px solid black;
 }
+footer{
+  display:flex;
+  justify-content:flex-end
+}
+
+
   </style>
 
   
@@ -29,6 +35,20 @@ img{
     <p>Please login!</p>
     {% endif %}
 </h1>
+
+
+    <form action="/like-fossil" method="post">
+      <label for="fossil">Select your favorite fossil</label>
+        <select id="fossil" name="fossil">
+              <option value="aust"> Australopithecus</option>
+              <option value="quetz"> Quetzal</option>
+              <option value="steg"> Stegosaurus</option>
+              <option value="trex"> Tyrannosaurus Rex</option>
+        </select>
+      <button type="submit">Like</button>
+
+    </form>
+
 </header>
 
 <br>
@@ -49,7 +69,9 @@ img{
       <h2>Liked {{ fossils[0].num_likes }} times.</h2>
       <img src="{{ fossils[0].img }}" /> 
     </div> #}
-
-
   </body>
+
+  <footer>
+
+</footer>
 </html>

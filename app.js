@@ -119,7 +119,11 @@ app.get('/top-fossils', (req, res) => {
 })
 
 
-
+app.post('/like-fossil', (req, res) => {
+  const likedFossil = req.body.fossil
+  MOST_LIKED_FOSSILS[likedFossil].num_likes++
+  res.render('thank-you.html.njk')
+})
 
 
 
